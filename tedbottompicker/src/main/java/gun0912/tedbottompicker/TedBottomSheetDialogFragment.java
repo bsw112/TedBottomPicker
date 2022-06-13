@@ -486,13 +486,12 @@ public class TedBottomSheetDialogFragment extends BottomSheetDialogFragment {
     }
 
     private void startGalleryIntent() {
-        Intent galleryIntent;
-        Uri uri;
+        Intent galleryIntent = new Intent(Intent.ACTION_GET_CONTENT)
+                .addCategory(Intent.CATEGORY_OPENABLE);
+
         if (builder.mediaType == BaseBuilder.MediaType.IMAGE) {
-            galleryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
             galleryIntent.setType("image/*");
         } else {
-            galleryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Video.Media.EXTERNAL_CONTENT_URI);
             galleryIntent.setType("video/*");
 
         }
